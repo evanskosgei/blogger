@@ -6,7 +6,7 @@ defmodule Blogger do
                         headers: [{"content-type", "application/json"}],
                         body: "{...}"}
   end
-  
+
   # Question 2
   def input_list(n) when n > 0 do
     list_item = []
@@ -21,4 +21,10 @@ defmodule Blogger do
   Blogger.input_list(4)
 
   # Question 3
+  def get_url do
+    url = HTTPoison.get!("https://jsonplaceholder.typicode.com/todos/1")
+    todo = url.body.map { todo, todo.to_s.sub() }
+    Enum.each todo, fn todo ->
+    IO.puts todo
+ end
 end
